@@ -1,14 +1,63 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Página de boas-vindas do Primefaces" />
-    </h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Login</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:menubar>                       
+                        <p:menuitem value="Login" url="index.jsf" /> 
+                        <p:menuitem> 
+                            <h:form>
+                                <h:panelGrid columns="2" cellpadding="10">                                    
+                                    <p:themeSwitcher id="basic" style="width:165px">
+                                        <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                                        <f:selectItems value="#{themeService.themes}"  var="theme" itemLabel="#{themeSwitcherView.init()}" itemValue="#{theme}"/>
+                                    </p:themeSwitcher>
+                                </h:panelGrid>
+                            </h:form>
+                        </p:menuitem> 
+
+                    </p:menubar>
+
+                </p:layoutUnit>                
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <p:messages id="msgs"/>
+                        <p:fieldset legend="Login">
+                            <p:outputLabel value="Usuário"></p:outputLabel>
+                            <p:inputText placeholder="Usuário" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.email}" />                            
+                            <br/>
+                            <br/>
+                            <p:outputLabel value="Senha"></p:outputLabel>
+                            <p:password placeholder="Senha" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.senha}"/> 
+                            <br/><br/>
+                            <p:commandButton type="submit" value="Logar" action="#{pessoaController.Login}"/>                         
+                        </p:fieldset>
+
+                        <a href="Cadastro.jsf">Clique aqui para cadastrar-se</a>
+
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+
 </html>
 
