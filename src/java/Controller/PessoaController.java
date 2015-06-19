@@ -96,8 +96,7 @@ public class PessoaController implements Serializable {
     public String Login() {
         try {
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-
-            Pessoa pessoa = null;
+            
             PessoaDAO pessoaDAO = new PessoaDAO();
 
             pessoa = pessoaDAO.VerificarLogin(Email, senha);
@@ -135,8 +134,8 @@ public class PessoaController implements Serializable {
 
     public String Cadastrar() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        try {
-            Pessoa pessoa;
+        try 
+        {           
             PessoaDAO pessoaDAO;
             //InputStream inputStream = null;
 

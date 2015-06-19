@@ -14,7 +14,7 @@ import javax.faces.bean.ManagedBean;
  *
  * @author Thiago
  */
-@ManagedBean
+
 public class Pessoa implements java.io.Serializable
 {    
     private int IdPessoa;
