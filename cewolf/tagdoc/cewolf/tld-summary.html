@@ -1,0 +1,165 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cewolf
+          (Tag Library Documentation Generator - Generated Documentation)
+        </title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="cewolf (Tag Library Documentation Generator - Generated Documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>cewolf</h2>
+<hr>
+<b>Standard Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;%@ taglib prefix="cewolf" uri="http://cewolf.sourceforge.net/taglib/cewolf.tld" %&gt;<br>
+</code>
+<br>
+<b>XML Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;anyxmlelement xmlns:cewolf="http://cewolf.sourceforge.net/taglib/cewolf.tld" /&gt;<br>
+</code>
+<hr>
+<pre>This tag library is designed to describe charts of all kinds.</pre>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Version</td><td>1.1</td>
+</tr>
+<tr>
+<td>Short Name</td><td>cewolf</td>
+</tr>
+<tr>
+<td>URI</td><td>http://cewolf.sourceforge.net/taglib/cewolf.tld</td>
+</tr>
+</table>
+            &nbsp;
+            <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="plot.html">plot</a></b></td><td>The plot tag is nested inside a complex chart to define a nested or layered plot instance.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="img.html">img</a></b></td><td>This tag is a specialized HTML img tag. It renders the chart which has been specified by a &lt;chart> tag in the same page. <BR>optional childs: &lt;map></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="imgurl.html">imgurl</a></b></td><td>This tag can be used as the src attribute of a HTML img tag. E.g.: &lt;img src='&lt;cewolf:imgurl chartid="foobar" renderer="cewolf" width="100" height="100"/>'> If the var attribute is used the URL is exposed as a page attribute of type String.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="chart.html">chart</a></b></td><td>Root tag of a chart description. <BR>optional childs: &lt;chartpostprocessor></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="overlaidchart.html">overlaidchart</a></b></td><td>Root tag of a overlaid-chart description. <BR>optional childs: &lt;chartpostprocessor></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="combinedchart.html">combinedchart</a></b></td><td>Root tag of a combined-chart description. <BR>optional childs: &lt;chartpostprocessor></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="legend.html">legend</a></b></td><td>This tag is used to render the legend of a chart in a separate image. It assumes that somewhere else in the JSP a chart tag defines a chart with the same ID as this legend tag.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="data.html">data</a></b></td><td>A data tag provides all information needed to retrieve the data which are needed by the chart. Current version only supports data provided by a DatasetProducer. In future versions there will be tags to provide data from a datasource (e.g. via SQL). <BR>optional childs: &lt;producer></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="producer.html">producer</a></b></td><td>A data tag provides all information needed to retrieve the data which are needed by the chart. Current version only supports data provided by a DatasetProducer. In future versions there will be tags to provide data from a datasource (e.g. via SQL). <BR>optional childs: &lt;param></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="chartpostprocessor.html">chartpostprocessor</a></b></td><td>A chart postprocessor tag references an object of type ChartPostProcessor which must be defined in pageContext under the provided ID. This object is called back after chart generation to post process the chart in any manner. <BR>optional childs: &lt;param></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="param.html">param</a></b></td><td>Name/value-pair to parameterize a surrounding tag whose handler must implement the Parameterized interface.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="gradientpaint.html">gradientpaint</a></b></td><td>The gradientpaint tag provides a way to fill a shape with a linear color gradient pattern. If Point P1 with Color C1 and Point P2 with Color C2 are specified in user space, the Color on the P1, P2 connecting line is proportionally changed from C1 to C2. Any point P not on the extended P1, P2 connecting line has the color of the point P' that is the perpendicular projection of P on the extended P1, P2 connecting line. Points on the extended line outside of the P1, P2 segment can be colored in one of two ways. <ul> <li>If the gradient is cyclic then the points on the extended P1, P2 connecting line cycle back and forth between the colors C1 and C2. <li>If the gradient is acyclic then points on the P1 side of the segment have the constant Color C1 while points on the P2 side have the constant Color C2. The two colors are defined in a nested point tag of this tag. </ul></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="point.html">point</a></b></td><td>Defines a point with x and y coordinates and a color.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="colorpaint.html">colorpaint</a></b></td><td>Fills the area defined by the parent tag with a color.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="texturepaint.html">texturepaint</a></b></td><td>The texturepaint tag provides a way to fill the area of the parent tag with a texture that is specified as an image. The texture is anchored to the upper left corner of the parent tags area.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="map.html">map</a></b></td><td>This tag defines an image and tooltip map for the parent img tag.</td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Java, JSP, and JavaServer Pages are trademarks or registered 
+            trademarks of Sun Microsystems, Inc. in the US and other countries.
+            Copyright 2002-3 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

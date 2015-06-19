@@ -1,0 +1,211 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>legend
+          (Tag Library Documentation Generator - Generated Documentation)
+        </title>
+<meta name="keywords" content="$title">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="legend (Tag Library Documentation Generator - Generated Documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="legend.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">cewolf</font>
+<br>
+            Tag legend</h2>
+<hr>This tag is used to render the legend of a chart in a separate image. It assumes that somewhere else in the JSP a chart tag defines a chart with the same ID as this legend tag.<br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>de.laures.cewolf.taglib.tags.LegendTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>renderer</td><td>true</td><td>true</td><td><code>java.lang.String</code></td><td>Path to rendering servlet relative to web apps root URL (e.g. servlet/cewolf).</td>
+</tr>
+<tr valign="top">
+<td>id</td><td>true</td><td>true</td><td><code>java.lang.String</code></td><td>ID under which the chart description bean will be stored in the session to be found by the rendering servlet. Beware of using an ID which is not yet used for other beans in the session to avoid overriding.</td>
+</tr>
+<tr valign="top">
+<td>width</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>height</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>mime</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The MIME type of the image. Currently image/png (default), image/jpeg and image/svg are supported.</td>
+</tr>
+<tr valign="top">
+<td>timeout</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>How long to store the legend image in the session; default is 300 (seconds).</td>
+</tr>
+<tr valign="top">
+<td>alt</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>hspace</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>vspace</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>align</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>border</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>ismap</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>longdesc</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>usemap</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>class</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>dir</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>lang</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onclick</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>ondbclick</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onkeydown</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onkeypress</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onkeyup</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onmousedown</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onmousemove</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onmouseout</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onmouseover</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>onmouseup</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>style</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>htmltitle</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Corresponds to appropriate HMTL &lt;img> attribute.</td>
+</tr>
+<tr valign="top">
+<td>forceSessionId</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Add JSession id.</td>
+</tr>
+<tr valign="top">
+<td>removeAfterRender</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Remove image after rendering (defaults to false).</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="legend.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by 
+            <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or 
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>
