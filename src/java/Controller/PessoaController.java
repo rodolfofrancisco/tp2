@@ -7,17 +7,12 @@ package Controller;
 
 import DAO.PessoaDAO;
 import Models.Pessoa;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
-
 /**
  *
  * @author Thiago
@@ -32,7 +27,12 @@ public class PessoaController implements Serializable {
     private String Email;
     private String senha;
     private String texto;
-    private Pessoa pessoa = null ;
+    private Pessoa pessoa = null ;    
+    
+    public PessoaController ()
+    {
+        pessoa = new Pessoa();
+    }
 
     public Pessoa getPessoa() {
         return pessoa;
@@ -72,10 +72,7 @@ public class PessoaController implements Serializable {
 
     public void setFoto(InputStream Foto) {
         this.Foto = Foto;
-    }
-
-    public PessoaController() {
-    }
+    }   
 
     public String getEmail() {
         return Email;
@@ -93,22 +90,31 @@ public class PessoaController implements Serializable {
         this.senha = senha;
     }
 
-    public String Login() {
-        try {
+    public String Login() 
+    {
+        try 
+        {           
+            
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
             
             PessoaDAO pessoaDAO = new PessoaDAO();
 
             pessoa = pessoaDAO.VerificarLogin(Email, senha);
 
-            if (pessoa == null) {
+            if (pessoa == null) 
+            {
                 session.invalidate();
-            } else {
+                
+            }
+            else 
+            {
                 session.setAttribute("pessoa", pessoa);
-                return ("Logado");
+                return ("index");
             }
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) 
+        {
             e.printStackTrace();
         }
         return null;
@@ -132,15 +138,17 @@ public class PessoaController implements Serializable {
         return null;
     }
 
-    public String Cadastrar() {
+    public String Cadastrar() 
+    {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        
         try 
         {           
             PessoaDAO pessoaDAO;
             //InputStream inputStream = null;
 
             //Part foto =  (Part) Foto;
-            //inputStream = foto.getInputStream();
+            //inputStream = foto.getInputStream();            
             pessoa = new Pessoa(
                     Nome,
                     Nascimento,
@@ -151,21 +159,13 @@ public class PessoaController implements Serializable {
             pessoaDAO = new PessoaDAO();
             pessoaDAO.Cadastrar(pessoa);
             session.setAttribute("pessoa", pessoa);
-            return ("Logado");
+            return ("index");
 
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             e.printStackTrace();
         }
         return null;
-    }   
-    
-    public String Procurar() throws Exception
-    {        
-        PessoaDAO pessoaDAO = new PessoaDAO();
-        this.pessoa = pessoaDAO.Search(texto);
-        System.out.println("Nome ====>" + pessoa.getNome() + "\n");
-        System.out.println("Email ====>" + pessoa.getEmail() + "\n");
-        return ("Logado");
-    }
-
+    }  
 }

@@ -23,21 +23,14 @@ public class PessoaDAO implements IPessoaDAO
 
     public Pessoa VerificarLogin(String email, String senha) throws Exception 
     {       
-        conexao.AbrirConexao();         
+        conexao.AbrirConexao();
         
-        System.out.println("Verficando Login");
-        System.out.println("Email =====>" + email);
-        System.out.println("Senha =====>" + senha);
-        System.out.println("Entrando try");
         try 
-        {
-            System.out.println("Entrou try");
+        {            
             query = conexao.conexao.prepareStatement("SELECT P.nome FROM pessoa AS P WHERE P.email = ? AND P.senha = ?");
             query.setString(1, email);
-            query.setString(2, senha);   
-            System.out.println("Query =====>" + query);
+            query.setString(2, senha);               
             resultSet = query.executeQuery();  
-            System.out.println("result =====>" + resultSet.toString());
 
             if (resultSet.next())
             {                
@@ -48,6 +41,7 @@ public class PessoaDAO implements IPessoaDAO
 
                 return pessoa;
             } 
+            
             else 
             {
                 return null;
@@ -92,42 +86,6 @@ public class PessoaDAO implements IPessoaDAO
             conexao.FecharConexao();
         }
 
-    }
-
-   
-    public Pessoa Search(String texto) throws Exception 
-    {
-        conexao.AbrirConexao();      
-        
-        try 
-        {            
-            query = conexao.conexao.prepareStatement("SELECT * FROM pessoa AS P WHERE P.nome = ?");
-            query.setString(1, texto);
-            resultSet = query.executeQuery();              
-
-            if (resultSet.next())
-            {                
-                Pessoa pessoa = new Pessoa();
-                pessoa.setNome(resultSet.getString("nome"));  
-                pessoa.setEmail(resultSet.getString("email"));               
-
-                return pessoa;
-            } 
-            else 
-            {
-                return null;
-            }
-        } 
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        } 
-        finally 
-        {
-            conexao.FecharConexao();
-        }
-        
-        return null;
     }
 
 }

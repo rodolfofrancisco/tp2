@@ -1,64 +1,57 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Login</title>
-            </f:facet>
-        </h:head>
-
-        <h:body>
-
-            <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    <p:menubar>                       
-                        <p:menuitem value="Login" url="index.jsf" /> 
-                        <p:menuitem> 
-                            <h:form>
-                                <h:panelGrid columns="2" cellpadding="10">                                    
-                                    <p:themeSwitcher id="basic" style="width:165px">
-                                        <f:selectItem itemLabel="Tema Padrão" itemValue="" />
-                                        <f:selectItems value="#{themeService.themes}"  var="theme" itemLabel="#{themeSwitcherView.init()}" itemValue="#{theme}"/>
-                                    </p:themeSwitcher>
-                                </h:panelGrid>
-                            </h:form>
-                        </p:menuitem> 
-
-                    </p:menubar>
-
-                </p:layoutUnit>                
-
-                <p:layoutUnit position="center">
-                    <h:form>
-                        <p:messages id="msgs"/>
-                        <p:fieldset legend="Login">
-                            <p:outputLabel value="Usuário"></p:outputLabel>
-                            <p:inputText placeholder="Usuário" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.email}" />                            
-                            <br/>
-                            <br/>
-                            <p:outputLabel value="Senha"></p:outputLabel>
-                            <p:password placeholder="Senha" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.senha}"/> 
-                            <br/><br/>
-                            <p:commandButton type="submit" value="Logar" action="#{pessoaController.Login}"/>                         
-                        </p:fieldset>
-
-                        <a href="Cadastro.jsf">Clique aqui para cadastrar-se</a>
-                        <a href="graficos.jsp">Gráficos</a>
-
-                    </h:form>
-                </p:layoutUnit>
-
-            </p:layout>
-
-        </h:body>
-
-    </f:view>
-
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    
+    <ui:include src="./common/header.xhtml"/> 
+    <h:body>  
+         <ui:include src="./common/navigator.xhtml"/>
+        <div class="container conteudo-pagina">
+            <div id="conteudo" class="row conteudo-principal " style="height: 944px;">
+                <div class="col-md-12">
+<!--                    <c:choose>
+                        <c:when test="${ pessoa eq null }"></c:when>
+                        <c:otherwise>-->
+                            <div class="row">
+                                <h2 class="title-box">Criminalidade na região metropolitana de Belo Horizonte-MG</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form action="./index?action=post" method="POST">
+                                        <div class="form-group">
+                                            <label>Categoria</label>
+                                            <select name="categoria" class="form-control">
+<!--                                                <c:if test="${not empty categorias}">
+                                                    <c:forEach var="categoria" items="${categorias}">
+                                                        <option value="${categoria.getId()}">${categoria.getDescricao()}</option>
+                                                    </c:forEach>
+                                                </c:if>-->
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Localização</label>
+                                            <select name="localizacao" class="form-control">
+<!--                                                 <c:if test="${not empty localizacoes}">
+                                                    <c:forEach var="localizacao" items="${localizacoes}">
+                                                        <option value="${localizacao.getId()}">${localizacao.getDescricao()}</option>
+                                                    </c:forEach>
+                                                </c:if>-->
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-inicia-coleta">Iniciar Coleta</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-6"></div>
+                            </div>
+                            <div class="row graph">
+                                <div class="col-md-6 graph-bar"></div>
+                                <div class="col-md-6 graph-line"></div>
+                            </div>
+<!--                        </c:otherwise>
+                    </c:choose>-->
+                </div>
+            </div>
+        </div>
+    </h:body>
 </html>
-
