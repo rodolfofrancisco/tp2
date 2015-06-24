@@ -128,7 +128,7 @@ public class PessoaController implements Serializable {
 
             session.invalidate();
 
-            return ("index");
+            return ("Login");
 
         } 
         catch (Exception e) 

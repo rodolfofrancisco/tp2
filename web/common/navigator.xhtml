@@ -1,46 +1,126 @@
-<nav class="navbar navbar-default" >
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display --> 
-        <div class="navbar-header">
-            <a href="#{request.contextPath}">
-                <h1 class="logo-header">Web Crawler</h1>
-            </a>
-<!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>                        
-            <a class="navbar-brand" href="./index.html">Web Crawler</a> -->
-        </div>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        
-        <div class="collapse navbar-collapse navbar-right">
-<!--            <c:choose>
-                <c:when test="${ pessoa eq null }">-->
-                    <ul class="nav navbar-nav">
-                        <li><a href="#{request.contextPath}/Login.jsf" class="btn-navbar">Entrar</a></li>
-                        <li><a href="#{request.contextPath}/Cadastro.jsf" class="btn-navbar">Cadastre-se</a></li>                        
-                    </ul>
-<!--                </c:when>
-                <c:otherwise>-->
-                    <ul class="nav navbar-nav">
-                        <li><a href="#{request.contextPath}/categoria/index" class="btn-navbar">Categorias</a></li>
-                        <li><a href="#{request.contextPath}/localizacao/index" class="btn-navbar">Localizações</a></li>
-                        <li role="presentation" class="dropdown">
-                            <a class="dropdown-toggle btn-navbar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display --> 
+            <div class="navbar-header">
+                <a href="#{request.contextPath}">
+                    <h1 class="logo-header">Web Crawler</h1>
+                </a>
+                <!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>                        
+                            <a class="navbar-brand" href="./index.html">Web Crawler</a> -->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse navbar-right">
+
+                <!--            <c:choose>
+                                <c:when test="${ pessoa eq null }">-->
+                <ul class="nav navbar-nav">                        
+                    <li><a href="#{request.contextPath}/Login.jsf" class="btn-navbar">Entrar</a></li>
+                    <li><a href="#{request.contextPath}/Cadastro.jsf" class="btn-navbar">Cadastre-se</a></li>                        
+                </ul>
+                <!--                </c:when>
+                                <c:otherwise>-->
+
+                <ul class="nav navbar-nav">
+                       
+                    <select id="temas">
+                        <option value="Tema Padrão">Tema Padrão</option>
+                        <option value="Tema 1">Tema 1</option>
+                        <option value="Tema 2">Tema 2</option>
+                        <option value="Tema 3">Tema 3</option>   
+                        <option value="Tema 4">Tema 4</option>
+                        <option value="Tema 5">Tema 5</option>        
+                    </select>
+
+                    <li><a href="#{request.contextPath}/categoria/index" class="btn-navbar">Categorias</a></li>
+                    <li><a href="#{request.contextPath}/localizacao/index" class="btn-navbar">Localizações</a></li>
+
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle btn-navbar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 ${ pessoa.getNome() } <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="navbar-brand btn btn-link" href="#{request.contextPath}/Logout" >Logout</a>
-                                </li>
-                             </ul>
-                        </li>
-                    </ul>
-<!--                </c:otherwise>
-            </c:choose>-->
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <h:form>
+                                    <h:commandLink class="navbar-brand btn btn-link" action="#{pessoaController.Logout}" value="Logout"/>
+
+                                </h:form>
+                            </li>                                
+                        </ul>                            
+                    </li>
+                </ul>
+                <!--                </c:otherwise>
+                            </c:choose>-->
+            </div>
         </div>
-    </div>
-</nav>   
+    </nav>   
+
+    <script>
+        $(function () {
+            $('#temas').change(function MudarTema() {
+                var valor = $('#temas').val();
+                var rel = $('link[title="tema"]');
+                console.log("Valor ===> " + valor);
+
+                //if (valor == "Grayscale")
+
+                switch (valor)
+                {
+                    case "Tema Padrão":
+                    {
+                        rel.attr('href', ' ');
+                        rel.attr('href', '#{request.contextPath}/Bootstrap/css/bootstrap.css');
+                        break;
+                    }
+
+                    case "Tema 1":
+                    {
+                        rel.attr('href', ' ');
+                        rel.attr('href', '#{request.contextPath}/Bootstrap/css/bootstrap2.css');
+                        break;
+                    }
+
+                    case "Tema 2":
+                    {
+                        rel.attr('href', ' ');
+                        rel.attr('href', '#{request.contextPath}/Bootstrap/css/bootstrap3.css');
+                        break;
+                    }
+
+                    case "Tema 3":
+                    {
+                        rel.attr('href', ' ');
+                        rel.attr('href', '#{request.contextPath}/Bootstrap/css/bootstrap4.css');
+                        break;
+                    }
+                    
+                    case "Tema 4":
+                    {
+                        rel.attr('href', ' ');
+                        rel.attr('href', '#{request.contextPath}/Bootstrap/css/bootstrap5.css');
+                        break;
+                    }
+
+                    case "Tema 5":
+                    {
+                        rel.attr('href', ' ');
+                        rel.attr('href', '#{request.contextPath}/Bootstrap/css/bootstrap6.css');
+                        break;
+                    }
+
+                }
+            });
+        });
+    </script>
+</html>
+
