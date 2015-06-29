@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+        <h:outputStylesheet name="./bootstrap/css/bootstrap.css" />
+        <h:outputScript name="./js/jquery-1.11.2.js" />
+        <h:outputScript name="./bootstrap/js/bootstrap.js" />
+        <h:outputScript name="./js/controller.js" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'/>
+        <h:outputStylesheet name="./bootstrap/datepicker/css/bootstrap-datepicker.css" />
+        <h:outputStylesheet name="./bootstrap/fileinput/css/fileinput.css" />
+        <h:outputScript name="./bootstrap/datepicker/js/bootstrap-datepicker.min.js" />
+        <h:outputScript name="./bootstrap/datepicker/js/bootstrap-datepicker.pt-BR.min.js" />
+        <h:outputScript name="./bootstrap/fileinput/js/fileinput.js" />
+        <h:outputScript name="./bootstrap/fileinput/js/fileinput_locale_pt.js" />
+        <h:outputStylesheet name="./css/jquery.jqplot.css" />
+        <h:outputScript name="./js/jquery.jqplot.min.js" />
+        <h:outputScript name="./js/excanvas.min.js" />
+        <h:outputScript name="./js/plugins/jqplot.dateAxisRenderer.min.js" />
+        <h:outputScript name="./js/plugins/jqplot.canvasTextRenderer.min.js" />
+        <h:outputScript name="./js/plugins/jqplot.canvasAxisTickRenderer.min.js" />
+        <h:outputScript name="./js/plugins/jqplot.categoryAxisRenderer.min.js" />
+        <h:outputScript name="./js/plugins/jqplot.barRenderer.min.js" />
+        <h:outputScript name="./js/bootstrap-tagsinput-angular.min.js" />
+        <h:outputScript name="./js/bootstrap-tagsinput.min.js" />
+        <h:outputStylesheet name="./css/bootstrap-tagsinput.css" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <title>Web Crawler</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <div id="top" class="top">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display --> 
+                        <div class="navbar-header">
+                            <a href="#{request.contextPath}">
+                                <h1 class="logo-header">Web Crawler</h1>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right">
+                            <h:panelGroup rendered="#{pessoaController.pessoa == null}">
+                                <ul class="nav navbar-nav">                        
+                                    <li>
+                                        <h:commandLink value="Entrar" class="btn-navbar" action="#{pessoaController.loginAction}" />
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="Cadastre-se" class="btn-navbar" action="#{pessoaController.cadastroAction}" />
+                                    </li>
+                                </ul>
+                            </h:panelGroup>
+                            <ul class="nav navbar-nav">
+                                <li class="temas">
+                                    <select id="temas" class="form-control btn-navbar">
+                                        <option value="Tema Padrão">Tema Padrão</option>
+                                        <option value="Tema 1">Tema 1</option>
+                                        <option value="Tema 2">Tema 2</option>
+                                        <option value="Tema 3">Tema 3</option>   
+                                        <option value="Tema 4">Tema 4</option>
+                                        <option value="Tema 5">Tema 5</option>        
+                                    </select>
+                                </li>
+                                <h:panelGroup rendered="#{pessoaController.pessoa != null}">
+                                    <li>
+                                        <h:commandLink value="Categorias" class="btn-navbar" action="#{categoriaController.listAction}" />
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="Localizações" class="btn-navbar" action="#{localizacaoController.listAction}" />
+                                    </li>
+                                    <li role="presentation" class="dropdown">
+                                        <a class="dropdown-toggle btn-navbar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            #{pessoaController.pessoa.nome} <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <h:commandLink class="navbar-brand btn btn-link" action="#{pessoaController.logout}" value="Logout"/>
+                                            </li>                                
+                                        </ul>
+                                    </li>
+                                </h:panelGroup>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </h:form>
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

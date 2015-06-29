@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/06/2015 17:58:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="br.com.modelo.Localizacao" table="localizacao" catalog="tp1db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="descricao" type="string">
+            <column name="descricao" length="100" not-null="true" />
+        </property>
+        <property name="palavrasChaves" type="string">
+            <column name="palavras_chaves" length="200" />
+        </property>
+        <property name="longitude" type="string">
+            <column name="longitude" length="45" />
+        </property>
+        <property name="latitude" type="string">
+            <column name="latitude" length="45" />
+        </property>
+        <set name="tweets" table="tweet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="localizacao_id" not-null="true" />
+            </key>
+            <one-to-many class="br.com.modelo.Tweet" />
+        </set>
+    </class>
+</hibernate-mapping>

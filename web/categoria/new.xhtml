@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <div class="container conteudo-pagina">
+            <div id="conteudo" class="row conteudo-principal " style="height: 944px;">
+                <div class="col-md-12">
+                    <div class="row col-md-offset-3">
+                        <h2 class="title-box">Cadastrar Categoria</h2>
+                    </div>
+                    <div class="row form col-md-6 col-md-offset-3">
+                        <h:form>
+                            <div class="row">
+                                <div class="form-group field-form">
+                                    <label>Descrição:</label>
+                                    <h:inputText value="#{categoriaController.categoria.descricao}" styleClass="form-control"/>
+                                </div>
+                                <div class="form-group field-form">
+                                    <label style="display: block">Palavras Chaves:</label>
+                                    <h:inputText value="#{categoriaController.categoria.palavrasChaves}" styleClass="form-control" p:data-role="tagsinput"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <h:commandButton value="Salvar" styleClass="btn btn-success submit" action="#{categoriaController.saveCategoria}" />
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

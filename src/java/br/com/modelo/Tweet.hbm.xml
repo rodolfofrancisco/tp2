@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/06/2015 17:58:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="br.com.modelo.Tweet" table="tweet" catalog="tp1db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categoria" class="br.com.modelo.Categoria" fetch="select">
+            <column name="categoria_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="localizacao" class="br.com.modelo.Localizacao" fetch="select">
+            <column name="localizacao_id" not-null="true" />
+        </many-to-one>
+        <property name="usuario" type="long">
+            <column name="usuario" not-null="true" />
+        </property>
+        <property name="dataPostagem" type="timestamp">
+            <column name="data_postagem" length="19" not-null="true" />
+        </property>
+        <property name="tweet" type="string">
+            <column name="tweet" length="200" not-null="true" />
+        </property>
+        <property name="tweetId" type="long">
+            <column name="tweet_id" not-null="true" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -10,15 +10,16 @@ import Models.Pessoa;
 import java.io.InputStream;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
+
 /**
  *
- * @author Thiago
+ * @author 'Rodolfo
  */
-@MultipartConfig(maxFileSize = 16177215)
 @ManagedBean
+@SessionScoped
 public class PessoaController implements Serializable {
 
     private String Nome;
@@ -27,11 +28,11 @@ public class PessoaController implements Serializable {
     private String Email;
     private String senha;
     private String texto;
-    private Pessoa pessoa = null ;    
+    private Pessoa pessoa;    
     
     public PessoaController ()
     {
-        pessoa = new Pessoa();
+        
     }
 
     public Pessoa getPessoa() {
@@ -89,11 +90,17 @@ public class PessoaController implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
+    public String loginAction() {
+        return "login";
+    }
+    
+    public String cadastroAction() {
+        return "cadastro";
+    }
 
-    public String Login() 
-    {
-        try 
-        {           
+    public String login() {
+        try {           
             
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
             
@@ -101,41 +108,27 @@ public class PessoaController implements Serializable {
 
             pessoa = pessoaDAO.VerificarLogin(Email, senha);
 
-            if (pessoa == null) 
-            {
+            if (pessoa == null) {
                 session.invalidate();
-                
-            }
-            else 
-            {
+            } else {
                 session.setAttribute("pessoa", pessoa);
-                return ("index");
+                return "index";
             }
 
-        }
-        catch (Exception e) 
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public String Logout() 
-    {
-        try 
-        {
-            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+    public String logout() {
+        System.out.println("logouta");
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 
-            session.invalidate();
-
-            return ("Login");
-
-        } 
-        catch (Exception e) 
-        {
-            e.printStackTrace();
-        }
-        return null;
+        session.invalidate();
+        pessoa = null;
+        System.out.println("logout");
+        return "login";
     }
 
     public String Cadastrar() 
@@ -167,5 +160,6 @@ public class PessoaController implements Serializable {
             e.printStackTrace();
         }
         return null;
-    }  
+    }
+    
 }

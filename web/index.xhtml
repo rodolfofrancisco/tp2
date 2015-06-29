@@ -1,57 +1,46 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"      
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    
-    
-    <ui:include src="./common/header.xhtml"/> 
-    <h:body>  
-         <ui:include src="./common/navigator.xhtml"/>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
         <div class="container conteudo-pagina">
             <div id="conteudo" class="row conteudo-principal " style="height: 944px;">
                 <div class="col-md-12">
-<!--                    <c:choose>
-                        <c:when test="${ pessoa eq null }"></c:when>
-                        <c:otherwise>-->
-                            <div class="row">
-                                <h2 class="title-box">Criminalidade na região metropolitana de Belo Horizonte-MG</h2>
+                    <h:panelGroup rendered="#{pessoaController.pessoa != null}">
+                        <div class="row">
+                            <h2 class="title-box">Criminalidade na região metropolitana de Belo Horizonte-MG</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h:form>
+                                    <div class="form-group">
+                                        <label>Categoria</label>
+                                        <h:selectOneMenu styleClass="form-control" value="#{tweetController.categoria}">
+                                            <f:selectItems value="#{tweetController.categorias}" var="categoria" itemLabel="#{categoria.descricao}" itemValue="#{categoria.id}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Localização</label>
+                                        <h:selectOneMenu styleClass="form-control" value="#{tweetController.localizacao}">
+                                            <f:selectItems value="#{tweetController.localizacoes}" var="localizacao" itemLabel="#{localizacao.descricao}" itemValue="#{localizacao.id}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:commandButton value="Iniciar Coleta" styleClass="btn btn-success submit btn-inicia-coleta" action="#{tweetController.search}" />
+                                </h:form>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <form action="./index?action=post" method="POST">
-                                        <div class="form-group">
-                                            <label>Categoria</label>
-                                            <select name="categoria" class="form-control">
-<!--                                                <c:if test="${not empty categorias}">
-                                                    <c:forEach var="categoria" items="${categorias}">
-                                                        <option value="${categoria.getId()}">${categoria.getDescricao()}</option>
-                                                    </c:forEach>
-                                                </c:if>-->
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Localização</label>
-                                            <select name="localizacao" class="form-control">
-<!--                                                 <c:if test="${not empty localizacoes}">
-                                                    <c:forEach var="localizacao" items="${localizacoes}">
-                                                        <option value="${localizacao.getId()}">${localizacao.getDescricao()}</option>
-                                                    </c:forEach>
-                                                </c:if>-->
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-default btn-inicia-coleta">Iniciar Coleta</button>
-                                    </form>
-                                </div>
-                                <div class="col-md-6"></div>
-                            </div>
-                            <div class="row graph">
-                                <div class="col-md-6 graph-bar"></div>
-                                <div class="col-md-6 graph-line"></div>
-                            </div>
-<!--                        </c:otherwise>
-                    </c:choose>-->
+                            <div class="col-md-6"></div>
+                        </div>
+                        <div class="row graph">
+                            <div class="col-md-6 graph-bar"></div>
+                            <div class="col-md-6 graph-line"></div>
+                        </div>
+                    </h:panelGroup>
                 </div>
             </div>
         </div>
-    </h:body>
-</html>
+    </ui:define>
+
+</ui:composition>

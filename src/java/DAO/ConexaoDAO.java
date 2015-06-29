@@ -13,7 +13,7 @@ public class ConexaoDAO implements IConexaoDAO{
     Connection conexao;
     private final String URLBD = "jdbc:mysql://localhost:3306/TP1DB?useUnicode=true&characterEncoding=UTF-8";
     private final String usuario = "root";
-    private final String senha = "admin";
+    private final String senha = "";
      
     public void AbrirConexao() 
     {   

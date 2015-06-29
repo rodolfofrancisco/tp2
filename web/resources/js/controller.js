@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: "index?action=graph&type=bar",
+        url: "index,jsf?method=graph&type=bar",
         dataType:"json",
         contentType: "application/json",
         mimeType: "application/json",

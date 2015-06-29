@@ -1,7 +1,7 @@
 .logo-header {
   display: inline-block;
   text-indent: -9800px;
-  background-image: url(../img/logo.png);
+  background-image: url(../images/logo.png.jsf);
   background-repeat: no-repeat;
   width: 250px;
   height: 52px!important;
@@ -30,7 +30,11 @@ ul.navbar-nav {
     margin-top: 22px;
 }
 
-ul.navbar-nav li a.btn-navbar {
+ul.navbar-nav li.temas{
+    margin-right: 15px;
+}
+
+ul.navbar-nav li a.btn-navbar, ul.navbar-nav li select.btn-navbar {
     vertical-align: middle;
     padding: 10px;
     background-color: white!important;
@@ -39,6 +43,10 @@ ul.navbar-nav li a.btn-navbar {
     border-radius: 6px!important;
     margin-right: 15px;
     color: #6d8fdb!important;
+}
+
+ul.navbar-nav li select.btn-navbar {
+    height: 42px;
 }
 
 ul.navbar-nav li a.btn-navbar:hover {
@@ -76,7 +84,7 @@ ul.dropdown-menu a:hover {
     padding: 20px;
 }
 
-.form form button {
+.form form input.submit {
     margin-top: 4px;
     height: 34px;
     width: 230px !important;
@@ -86,7 +94,7 @@ ul.dropdown-menu a:hover {
     border: none;
 }
 
-.form form button:hover{
+.form form input.submit:hover{
     opacity: 0.8;
 }
 
@@ -186,7 +194,7 @@ body {
     font-weight: lighter;
 }
 
-.table-container table td.acoes button {
+.table-container table td.acoes a.link {
     background: none;
     border: none;
     color: #6d8fdb;
@@ -198,7 +206,7 @@ body {
     padding-top: 5px;
 }
 
-.btn-register button {
+.btn-register a {
     background-color: #6d8fdb!important;
     background-image: none;
     border: none;
