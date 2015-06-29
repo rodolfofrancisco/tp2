@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div class="container conteudo-pagina">
+            <div id="conteudo" class="row conteudo-principal " style="height: 944px;">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h2 class="title-box">Cadastre-se</h2>
+                    </div>
+                    <div class="row form">
+                        <h:form class="" enctype="multipart/form-data">
+                            <fieldset>
+                                <div class="row col-md-6">
+                                    <div class="form-group field-form">
+                                        <label>Nome:</label>
+                                        <h:inputText class="form-control" id="nome" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.nome}"/>
+                                        <h:message for="nome" styleClass="label label-danger"/>
+                                    </div>
+                                    <div class="form-group field-form">
+                                        <label>Nascimento:</label>
+                                         <h:inputText class="form-control datepicker" id="datepicker" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.nascimento}"/>
+                                         <h:message for="datepicker" styleClass="label label-danger"/>
+                                    </div>
+                                </div>
+                                <div class="row col-md-6">
+                                    <!--                                    <div class="form-group field-form">
+                                                                            <label>Foto:</label>
+                                                                            <input type="file" class="form-control" id="foto" name="foto" required="true" value="#{pessoaControllerold.foto}"/>
+                                                                        </div>-->
+                                    <div class="form-group field-form">
+                                        <label>E-mail:</label>
+                                         <h:inputText class="form-control" id="email" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.email}"/>
+                                         <h:message for="email" styleClass="label label-danger"/>
+                                    </div>
+                                </div>
+                                <div class="row col-md-6">
+                                    <div class="form-group field-form">
+                                        <label>Senha:</label>
+                                         <h:inputSecret class="form-control" id="senha" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.senha}"/>
+                                         <h:message for="senha" styleClass="label label-danger"/>
+                                    </div>
+                                </div>                    
+                                <div class="row col-md-12">
+                                    <div class="text-center">
+                                        <h:commandButton action="#{pessoaControllerold.Cadastrar}" class="btn btn-success submit" value="Salvar"/>                                        
+                                    </div>
+                                </div>
+                            </fieldset>           
+                        </h:form>
+                    </div>
+                    <div class="row col-md-12" style="  padding-top: 10px; padding-left: 0px;">
+                        Já possui uma conta? 
+                        <a href="#{request.contextPath}/Login.jsf" title="Faça seu login">Faça seu login.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

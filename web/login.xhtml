@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div class="container conteudo-pagina">
+            <div id="conteudo" class="row conteudo-principal " style="height: 944px;">
+                <div class="col-md-12">
+                    <div class="row form col-md-6 col-md-offset-3">
+                        <h:form class="form-horizontal">                            
+                            <div class="form-group">
+                                <legend class="title-box text-center">Efetuar Login</legend>                          
+                                <center>
+                                    <img src="Imagens/avatar_2x.png" alt="" class="img-circle img-thumbnail img-responsive"/>
+                                </center>
+                                
+                                <div class="row">
+                                    <div class="input-group field-form">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <h:inputText class="form-control" id="email"  required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.email}"/>
+                                        <h:message for="email" styleClass="label label-danger"/>
+                                    </div>                                   
+                                </div>
+                                 
+                                <div class="row">
+                                    <div class="input-group field-form">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <h:inputSecret class="form-control" id="senha"  required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.senha}"/>
+                                        <h:message for="senha" styleClass="label label-danger"/>
+                                    </div>                                    
+                                </div>
+                                 
+                                <div class="row">
+                                    <div class="text-center">                                        
+                                        <h:commandButton value="Efetuar Login"  action="#{pessoaController.login}" class="btn btn-primary form-control submit"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="row col-md-12 col-md-offset-3" style="  padding-top: 10px; padding-left: 0px;">
+                        Não possui uma conta? 
+                        <a href="#{request.contextPath}/cadastro.jsf" title="Cadastre-se!">Cadastre-se!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
