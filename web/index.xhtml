@@ -3,7 +3,8 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./Layout.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
         <div class="container conteudo-pagina">
@@ -11,19 +12,19 @@
                 <div class="col-md-12">
                     <h:panelGroup rendered="#{pessoaController.pessoa != null}">
                         <div class="row">
-                            <h2 class="title-box">Criminalidade na região metropolitana de Belo Horizonte-MG</h2>
+                            <h2 class="title-box">#{msg.titulo}</h2>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <h:form>
                                     <div class="form-group">
-                                        <label>Categoria</label>
+                                        <label>#{msg.Categorias}:</label>
                                         <h:selectOneMenu styleClass="form-control" value="#{tweetController.categoria}">
                                             <f:selectItems value="#{tweetController.categorias}" var="categoria" itemLabel="#{categoria.descricao}" itemValue="#{categoria.id}" />
                                         </h:selectOneMenu>
                                     </div>
                                     <div class="form-group">
-                                        <label>Localização</label>
+                                        <label>Localização:</label>
                                         <h:selectOneMenu styleClass="form-control" value="#{tweetController.localizacao}">
                                             <f:selectItems value="#{tweetController.localizacoes}" var="localizacao" itemLabel="#{localizacao.descricao}" itemValue="#{localizacao.id}" />
                                         </h:selectOneMenu>
@@ -34,8 +35,12 @@
                             <div class="col-md-6"></div>
                         </div>
                         <div class="row graph">
-                            <div class="col-md-6 graph-bar"></div>
-                            <div class="col-md-6 graph-line"></div>
+                            <div class="col-md-6 graph-bar">
+                                <p:chart type="bar" model="#{tweetController.barModel}" style="height:300px"/>
+                            </div>
+                            <div class="col-md-6 graph-line">
+                                <p:chart type="line" model="#{tweetController.lineModel}" style="height:300px;"/>
+                            </div>
                         </div>
                     </h:panelGroup>
                 </div>

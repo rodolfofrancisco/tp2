@@ -9,44 +9,44 @@
             <div id="conteudo" class="row conteudo-principal " style="height: 944px;">
                 <div class="col-md-12">
                     <div class="row">
-                        <h2 class="title-box">Cadastre-se</h2>
+                        <h2 class="title-box">#{msg.Cadastro}</h2>
                     </div>
                     <div class="row form">
                         <h:form class="" enctype="multipart/form-data">
                             <fieldset>
                                 <div class="row col-md-6">
                                     <div class="form-group field-form">
-                                        <label>Nome:</label>
-                                        <h:inputText class="form-control" id="nome" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.nome}"/>
+                                        <label>#{msg.Nome}:</label>
+                                        <h:inputText class="form-control" id="nome" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.nome}"/>
                                         <h:message for="nome" styleClass="label label-danger"/>
                                     </div>
                                     <div class="form-group field-form">
-                                        <label>Nascimento:</label>
-                                         <h:inputText class="form-control datepicker" id="datepicker" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.nascimento}"/>
+                                        <label>#{msg.Nascimento}:</label>
+                                         <h:inputText class="form-control datepicker" id="datepicker" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.nascimento}"/>
                                          <h:message for="datepicker" styleClass="label label-danger"/>
                                     </div>
                                 </div>
                                 <div class="row col-md-6">
                                     <!--                                    <div class="form-group field-form">
                                                                             <label>Foto:</label>
-                                                                            <input type="file" class="form-control" id="foto" name="foto" required="true" value="#{pessoaControllerold.foto}"/>
+                                                                            <input type="file" class="form-control" id="foto" name="foto" required="true" value="#{pessoaController.foto}"/>
                                                                         </div>-->
                                     <div class="form-group field-form">
-                                        <label>E-mail:</label>
-                                         <h:inputText class="form-control" id="email" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.email}"/>
+                                        <label>#{msg.Email}:</label>
+                                         <h:inputText class="form-control" id="email" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.email}"/>
                                          <h:message for="email" styleClass="label label-danger"/>
                                     </div>
                                 </div>
                                 <div class="row col-md-6">
                                     <div class="form-group field-form">
-                                        <label>Senha:</label>
-                                         <h:inputSecret class="form-control" id="senha" required="true" requiredMessage="Campo obrigatório" value="#{pessoaControllerold.senha}"/>
+                                        <label>#{msg.Senha}:</label>
+                                         <h:inputSecret class="form-control" id="senha" required="true" requiredMessage="Campo obrigatório" value="#{pessoaController.senha}"/>
                                          <h:message for="senha" styleClass="label label-danger"/>
                                     </div>
                                 </div>                    
                                 <div class="row col-md-12">
                                     <div class="text-center">
-                                        <h:commandButton action="#{pessoaControllerold.Cadastrar}" class="btn btn-success submit" value="Salvar"/>                                        
+                                        <h:commandButton action="#{pessoaController.Cadastrar}" class="btn btn-success submit" value="#{msg.Salvar}"/>                                        
                                     </div>
                                 </div>
                             </fieldset>           

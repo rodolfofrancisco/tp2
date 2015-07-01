@@ -8,10 +8,10 @@
 }
 
 .navbar {
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 5px solid #6d8fdb;
+    border-top: none!important;
+    border-right: none!important;
+    border-left: none!important;
+    border-bottom: 5px solid #6d8fdb!important;
 }
 
 .navbar .container-fluid {
@@ -245,7 +245,7 @@ body {
 
 .btn-inicia-coleta {
     background-color: #6d8fdb!important;
-    background-image: none;
-    color: white;
-    border: none;
+    background-image: none!important;
+    color: white!important;
+    border: none!important;
 }

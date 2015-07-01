@@ -2,12 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <f:view locale="#{facesContext.externalContext.requestLocale}">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-        <h:outputStylesheet name="./bootstrap/css/bootstrap.css" />
+        <h:outputStylesheet name="./bootstrap/css/bootstrap.css" p:title="tema" />
+        <!--<link href="./resources/bootstrap/css/bootstrap.css" title="tema" rel='stylesheet' type='text/css'/>-->
         <h:outputScript name="./js/jquery-1.11.2.js" />
         <h:outputScript name="./bootstrap/js/bootstrap.js" />
         <h:outputScript name="./js/controller.js" />
@@ -96,5 +99,62 @@
         </div>
 
     </h:body>
+    <script>
+            $(function () {
+                $('#temas').change(function MudarTema() {
+                    var valor = $('#temas').val(),
+                        rel = $('link[title="tema"]'),
+                        ref = window.location.href,
+                        len = ref.indexOf("/TP2") + 5,
+                        url = ref.substring(0, len);
 
+                    switch (valor)
+                    {
+                        case "Tema Padrão":
+                        {
+                            rel.attr('href', ' ');
+                            rel.attr('href', url+'resources/bootstrap/css/bootstrap.css');
+                            break;
+                        }
+
+                        case "Tema 1":
+                        {
+                            rel.attr('href', ' ');
+                            rel.attr('href', url+'resources/bootstrap/css/bootstrap2.css');
+                            break;
+                        }
+
+                        case "Tema 2":
+                        {
+                            rel.attr('href', ' ');
+                            rel.attr('href', url+'resources/bootstrap/css/bootstrap3.css');
+                            break;
+                        }
+
+                        case "Tema 3":
+                        {
+                            rel.attr('href', ' ');
+                            rel.attr('href', url+'resources/bootstrap/css/bootstrap4.css');
+                            break;
+                        }
+
+                        case "Tema 4":
+                        {
+                            rel.attr('href', ' ');
+                            rel.attr('href', url+'resources/bootstrap/css/bootstrap5.css');
+                            break;
+                        }
+
+                        case "Tema 5":
+                        {
+                            rel.attr('href', ' ');
+                            rel.attr('href', url+'resources/bootstrap/css/bootstrap6.css');
+                            break;
+                        }
+
+                    }
+                });
+            });
+        </script>
+    </f:view>
 </html>

@@ -122,7 +122,7 @@ public class TweetDAO implements ITweetDAO {
     }
 
     @Override
-    public boolean hastTweet(Tweet tweet) throws Exception {
+    public boolean hastTweet(long id) throws Exception {
         PreparedStatement ps = null;
         ConexaoDAO conn = null;
         ResultSet rs = null;
@@ -132,7 +132,7 @@ public class TweetDAO implements ITweetDAO {
             conn = this.conn;
             conn.AbrirConexao();
             ps = conn.conexao.prepareStatement("SELECT id FROM tweet WHERE tweet_id = ?");
-            ps.setLong(1, tweet.getTweetId());
+            ps.setLong(1, id);
             rs = ps.executeQuery();
             if (rs.next()){
                 result = true;
@@ -147,7 +147,7 @@ public class TweetDAO implements ITweetDAO {
     }
 
     @Override
-    public JSONObject getDataGraphBar() throws Exception {
+    public List getDataGraphBar() throws Exception {
         PreparedStatement ps = null;
         ConexaoDAO conn = null;
         ResultSet rs = null;
@@ -187,16 +187,17 @@ public class TweetDAO implements ITweetDAO {
             conn.FecharConexao();
         }
         
-        return json;
+        return graph;
     }
     
     @Override
-    public JSONObject getDataGraphLine() throws Exception {
+    public List getDataGraphLine() throws Exception {
         PreparedStatement ps = null;
         ConexaoDAO conn = null;
         ResultSet rs = null;
         String sql = "";
         List<List<String>> graph = null;
+        List graph2 = null;
         JSONObject json2 = null;
         JSONObject json = new JSONObject();
         try {
@@ -210,7 +211,7 @@ public class TweetDAO implements ITweetDAO {
             int k = 0;
             
             while (iterator.hasNext()) {
-                List graph2 = new ArrayList<List<List<String>>>();
+                graph2 = new ArrayList<List<List<String>>>();
                 Categoria cat = iterator.next();
                 List localizacoes = new LocalizacaoDAO().getLocalizacoes();
                         
@@ -256,7 +257,6 @@ public class TweetDAO implements ITweetDAO {
         }finally{
             conn.FecharConexao();
         }
-        
-        return json;
+        return graph2;
     }
 }

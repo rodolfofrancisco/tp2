@@ -11,15 +11,25 @@ import br.com.modelo.Tweet;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.CategoryAxis;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LineChartModel;
 import twitter4j.GeoLocation;
 import twitter4j.JSONObject;
 import twitter4j.Query;
@@ -36,7 +46,7 @@ import twitter4j.conf.ConfigurationBuilder;
  * @author 'Rodolfo
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class TweetController {
     
     private TweetDAO jpa = new TweetDAO();
@@ -46,7 +56,96 @@ public class TweetController {
     private String categoria = null;
     private List localizacoes = null;
     private String localizacao = null;
+    private BarChartModel barModel;
+    private LineChartModel lineModel;
     
+    @PostConstruct
+    public void init() {
+        createBarModels();
+    }
+ 
+    public BarChartModel getBarModel() {
+        return barModel;
+    }
+    
+    public LineChartModel getLineModel() {
+        return lineModel;
+    }
+    
+    private BarChartModel initBarModel() {
+        BarChartModel model = new BarChartModel();
+        
+        try {
+            List tweets = new DAO.TweetDAO().getDataGraphBar();
+            for (Iterator it = tweets.iterator(); it.hasNext();) {
+                ChartSeries graph = new ChartSeries();
+                List<String> tweet = (List<String>) it.next();
+                graph.setLabel(tweet.get(0));
+                graph.set("", Integer.parseInt(tweet.get(1)));
+                model.addSeries(graph);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TweetController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        return model;
+    }
+     
+    private void createBarModels() {
+        createBarModel();
+    }
+     
+    private void createBarModel() {
+        barModel = initBarModel();
+         
+        barModel.setTitle("Assalto");
+        barModel.setLegendPosition("ne");
+         
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("cidades");
+         
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("tweets");
+        yAxis.setMin(0);
+//        yAxis.setMax(200);
+        
+        lineModel = initCategoryModel();
+        lineModel.setTitle("tweets");
+        lineModel.setLegendPosition("e");
+        lineModel.setShowPointLabels(true);
+        lineModel.getAxes().put(AxisType.X, new CategoryAxis("postagem"));
+        yAxis = lineModel.getAxis(AxisType.Y);
+        yAxis.setLabel("tweets");
+        yAxis.setMin(0);
+//        yAxis.setMax(200);
+    }
+    
+    private LineChartModel initCategoryModel() {
+        LineChartModel model = new LineChartModel();
+ 
+        try {
+            List tweets = new DAO.TweetDAO().getDataGraphLine();
+            String[] loc = null; int i = 1;
+            for (Iterator iterator = tweets.iterator(); iterator.hasNext();) {
+                List<List<String>> localizacoes = (List<List<String>>) iterator.next();
+                ChartSeries line = new ChartSeries();
+                for (Iterator<List<String>> iterator1 = localizacoes.iterator(); iterator1.hasNext();) {
+                    List<String> next = iterator1.next();
+                    line.setLabel(next.get(0));
+                    String oldstring = next.get(3);
+                    Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(oldstring);
+                    String newstring = new SimpleDateFormat("dd/MM").format(date);
+                    line.set(newstring, Integer.parseInt(next.get(1)));
+                }
+                model.addSeries(line);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(TweetController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        return model;
+    }
     
     public Tweet getTweet() {
         return tweet;
@@ -91,6 +190,7 @@ public class TweetController {
     public TweetController() {
         categorias = new CategoriaDAO().findAll();
         localizacoes = new LocalizacaoDAO().findAll();
+        createBarModels();
     }
     
     private static final String CONSUMER_KEY = "aljnGUyIuROVGKJSbavAuvLcP";
@@ -201,10 +301,12 @@ public class TweetController {
                     t.setUsuario(s.getUser().getId());
                     t.setDataPostagem(s.getCreatedAt());
                     t.setTweet(s.getText());
-                    t.setTweetId(s.getId());
-                    t.setCategoria(c);
-                    t.setLocalizacao(l);
-                    jpa.saveOrUpdate(t);
+                    if (! new DAO.TweetDAO().hastTweet(s.getId())) {
+                        t.setTweetId(s.getId());
+                        t.setCategoria(c);
+                        t.setLocalizacao(l);
+                        jpa.saveOrUpdate(t);
+                    }
                 }
                 searchTweetsRateLimit = r.getRateLimitStatus();
             }
@@ -212,32 +314,6 @@ public class TweetController {
         
         
         return "index";
-    }
-    
-    public void graph() {
-        try {
-            String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
-            JSONObject jsonObj = null;
-            if (type != null) {
-                switch (type) {
-                    case "bar": 
-                        jsonObj = new DAO.TweetDAO().getDataGraphBar();
-                    break;
-                    case "line":
-                        jsonObj = new DAO.TweetDAO().getDataGraphLine();
-                    break;
-                }
-            }
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            ExternalContext externalContext = facesContext.getExternalContext();
-            externalContext.setResponseContentType("application/json");
-            externalContext.setResponseCharacterEncoding("UTF-8");
-            externalContext.getResponseOutputWriter().write(jsonObj.toString());
-            facesContext.responseComplete();
-        } catch (Exception ex) {
-            Logger.getLogger(TweetController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
     
 }

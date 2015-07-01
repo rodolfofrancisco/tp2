@@ -21,10 +21,10 @@ public interface ITweetDAO {
     
     public Tweet getTweet(String id) throws Exception;
     
-    public boolean hastTweet(Tweet tweet) throws Exception;
+    public boolean hastTweet(long id) throws Exception;
     
-    public JSONObject getDataGraphBar() throws Exception;
+    public List getDataGraphBar() throws Exception;
     
-    public JSONObject getDataGraphLine() throws Exception;
+    public List getDataGraphLine() throws Exception;
      
 }
